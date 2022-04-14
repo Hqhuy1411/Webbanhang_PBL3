@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>ADD CITY</h1>
+	<form th:action="@{/category/add}" method="post" th:object="${category}">
+		<input type="text" placeholder="Name of city" name="name" required />
+		<input type="text" placeholder="Name of city" name="description" required />
+		<input type="submit" value="Submit" />
+	</form>
+</body>
+</html>

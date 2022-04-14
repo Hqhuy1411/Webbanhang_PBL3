@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>LIST CITY</h1>
+	<table>
+		<tr>
+			<td>STT</td>
+			<td>NAME</td>
+			<td>Action</td>
+		</tr>
+		<tr th:each="i : ${list}">
+			<td><p th:text="${i.id}"></p></td>
+			<td><p th:text="${i.name}"></p></td>
+			<td><a th:href="@{'/city/update/' + ${i.id}}">Update</a></td>
+			<td><a th:href="@{'/city/delete/' + ${i.id}}"
+				onclick="return confirm('Want to delete!?')">Delete</a></td>
+		</tr>
+	</table>
+</body>
+</html>
