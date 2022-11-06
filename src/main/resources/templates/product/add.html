@@ -3,13 +3,59 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/css/addpr.css">
 </head>
 <body>
-	<h1>ADD CITY</h1>
-	<form th:action="@{/category/add}" method="post" th:object="${category}">
-		<input type="text" placeholder="Name of city" name="name" required />
-		<input type="text" placeholder="Name of city" name="description" required />
-		<input type="submit" value="Submit" />
-	</form>
+	<div class="wrapper">
+		<div class="inner">
+			<div class="image-holder">
+				<img src="/images/img.jpg" alt="">
+			</div>
+			<form th:action="@{/seller/add}" method="post" th:object="${product}" enctype="multipart/form-data">
+				<h3>ADD PRODUCT</h3>
+				<div class="form-row">
+					<input type="text" class="form-control" name="name" required placeholder="NAME"/>
+					<input type="text" class="form-control" name="price" required placeholder="PRICE"/> 
+				</div>
+				<div class="form-row">
+					<input type="text" class="form-control" name="code" placeholder="CODE">
+					<div class="form-holder">
+						<select name="categoryName" id="" class="form-control">
+							<option value="" disabled selected>CATEGORY</option>
+							<option>-saf-</option>
+							<option th:each="i : ${category}" th:value="${i}" th:text="${i}">
+						</select>
+						<i class="zmdi zmdi-chevron-down"></i>
+					</div>
+				</div>
+				<textarea name="description" id="" placeholder="DESCRIPTION" class="form-control" style="height: 130px;"></textarea>
+				<div class="form-row">
+					<input type="file" class="form-png" name="file" accept="image/png, image/jpeg" /> 
+				</div>
+				<button>Submit
+					<!-- <i class="zmdi zmdi-long-arrow-right"></i> -->
+				</button>
+			</form>
+			
+		</div>
+	</div>
+
+	<!-- <div class="testbox">
+		<form th:action="@{/seller/add}" method="post" th:object="${product}">
+			Name :<input type="text"  name="name" required />
+			Price: <input type="text"  name="price" required /> 
+			Description <input type="text"  name="description"  /> 
+			Code <input type="text"  name="code" required /> 
+			Category: <select name="categoryName">
+				<option>--</option>
+				<option th:each="i : ${category}" th:value="${i}" th:text="${i}">
+			</select> <br /> <br /> 
+			<input type="file" name="file" accept="image/png, image/jpeg" /> 
+			<div class="btn-block">
+				 <input type="submit" value="Submit"/> --
+				<button type="submit" href="/">Submit</button>
+			</div>
+		</form>	
+	</div> -->
 </body>
 </html>

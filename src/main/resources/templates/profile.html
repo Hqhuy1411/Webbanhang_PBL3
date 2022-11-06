@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index_pro.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+</head>
+
+<body>
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-xl-6 col-md-12">
+                    <form th:action="@{/update/profile}" method="post" th:object="${dto}">
+                        <div class="card user-card-full">
+                            <div class="row m-l-0 m-r-0">
+                                <div class="col-sm-4 bg-c-lite-green user-profile">
+                                    <div class="card-block text-center text-white">
+                                        <div class="m-b-25">
+                                            <img src="https://img.icons8.com/bubbles/100/000000/user.png"
+                                                class="img-radius" alt="User-Profile-Image">
+                                        </div>
+                                        <input th:field="*{id}" readonly hidden />
+                                        <input th:field="*{password}" readonly hidden />
+                                        <h6 class="f-w-600 username"><input th:field="*{username}" readonly /></h6>
+                                        <p>User</p>
+                                        <i class="feather icon-edit m-t-10 f-16 "><input class="save" type="submit" value="Save" /></i>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="card-block">
+                                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Full name</p>
+                                                <h6 class="text-muted f-w-400"><input th:field="*{fullname}" /></h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Email</p>
+                                                <h6 class="text-muted f-w-400"><input th:field="*{email}"
+                                                        type="email" /></h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Phone</p>
+                                                <h6 class="text-muted f-w-400"><input th:field="*{phone}"
+                                                        type="number" /><br /></h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">City</p>
+                                                <h6 class="text-muted f-w-400"> <select th:field="*{id_city}">
+                                                        <option th:each="city : ${citys}" th:value="${city.id}"
+                                                            th:text="${city.name}" />
+                                                    </select></h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Address</p>
+                                                <h6 class="text-muted f-w-400"><input th:field="*{address}"
+                                                        type="text" /> <br /></h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Gender</p>
+                                                <h6 class="text-muted f-w-400">
+                                                    <div>
+                                                        <input type="radio" th:field="*{gender}" th:value="1"
+                                                            th:text="Male" />
+                                                        <input type="radio" th:field="*{gender}" th:value="0"
+                                                            th:text="Female" />
+                                                    </div>
+                                                </h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Date</p>
+                                                <h6 class="text-muted f-w-400"><input type="date" th:field="*{birthday}" /></h6>
+                                            </div>
+                                        </div>
+                                        <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Profile</h6>
+                                        <!-- <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Recent</p>
+                                                <h6 class="text-muted f-w-400">Sam Disuja</h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Most Viewed</p>
+                                                <h6 class="text-muted f-w-400">Dinoter husainm</h6>
+                                            </div>
+                                        </div> -->
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<head>
+<style type="text/css">
+span {
+    color: red;
+    font-style: italic;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="css/register.css" />
+<meta charset="ISO-8859-1">
+<title>Login - Company ABC</title>
+</head>
+<body>
+	<div class="main-w3layouts wrapper">
+	<h1>Creative SignUp Form</h1>
+	<div class="main-agileinfo">
+	<div class="agileits-top">
+	<form th:action="@{/register}" method="post" th:object="${user}" 
+		style="max-width: 400px; margin: 0 auto;">
+		<div>
+			<label for="fullname"></label> <input type="text"
+				th:field="*{fullname}" id="fullname" placeholder="Full Name">
+			<span th:if="${#fields.hasErrors('fullname')}"  th:errors="*{fullname}"></span>
+
+		</div>
+		<div>
+			<label for="username"></label> <input type="text"
+				th:field="*{username}" id="username" placeholder="User Name">
+			<span th:if="${#fields.hasErrors('username')}"  th:errors="*{username}"></span>
+
+		</div>
+		<div>
+			<label for="password"></label> <input type="password"
+				th:field="*{password}" id="password" placeholder="Password" onchange='checkPassword()'>
+			<span th:if="${#fields.hasErrors('password')}"  th:errors="*{password}"></span>
+
+		</div>
+		<div>
+			<label for="confirm_password"></label> <input type="password"
+				th:field="*{confirm_password}" id="confirm_password" placeholder="Confirm Password" onchange='checkPassword()'>
+			<span th:if="${#fields.hasErrors('confirm_password')}"  th:errors="*{confirm_password}"></span>
+
+		</div>
+		<div>
+			<label for="phone"></label> <input type="text"
+				th:field="*{phone}"  placeholder="0xxx" pattern="[0]{1}[1-9]{1}[1-9]{8}"  >
+
+		</div>
+		<div  >
+				<select th:field="*{id_city}" style="padding: 10px; margin:10px; background:#F0FFFF; border:none;">
+                         <option th:each="city : ${citys}"
+                            th:value="${city.id}"
+                            th:text="${city.name}"/>
+                  </select>
+        </div>          
+       	<div class="wthree-text">
+			<label class="anim"></label>
+			<div class="clear"> </div>
+		</div>
+		<p>
+			<input type="submit" value="Register" />
+		</p>
+	</form>
+	<p>Don't have an Account? <a href="/login"> Login Now!</a></p>
+	</div>
+	</div>
+	<ul class="colorlib-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+	</ul>
+	</div>
+ <script type="text/javascript">		 
+		function checkPassword() {
+		    if (document.getElementById('password').value ==
+	            document.getElementById('confirm_password').value) {
+	        document.getElementById('message').innerHTML = "Right";
+	    	} else {
+		        document.getElementById('message').innerHTML = "Don't Match";
+	    	}
+		}
+	</script> 
+</body>
+</html>

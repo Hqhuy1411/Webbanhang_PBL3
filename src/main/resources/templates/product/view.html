@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>eCommerce Product Detail</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/view.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+	
+    <div class="container">
+        <form th:action="@{/customer/add/}" th:object="${product}" method="get" enctype="multipart/form-data">
+            <div class="card">
+                <div class="container-fliud">
+                    <div class="wrapper row">
+                        <div class="preview col-md-6">
+    
+                            <div class="preview-pic tab-content">
+                                <div class="tab-pane active" id="pic-1">		<img id="oldImage" th:src ="@{${product.ImagePath}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="details col-md-6">
+                            <h3 class="product-title"><input class="trans" th:field="*{name}" readonly /></h3>
+                            <h5 class="product-description"><input class="trans" th:field="*{id}" readonly hidden/> </h5>
+                            <p class="product-description">
+                                <textarea class="trans" cols="10" rows="4" th:field="*{description}" readonly></textarea>
+                            </p>
+                            <h4 class="price">Price: <span><input class="trans" th:field="*{price}" readonly/></span></h4>
+                            <select class="cate" name="categoryName">
+                                <option th:text="*{categoryName}" th:value="*{categoryName}"/>
+                                <th:block th:each="i : ${category}">
+                                <option th:unless="${#strings.equals(product.categoryName, i)}" th:value="${i}" th:text="${i}"/>
+                            </select>
+                            <input type="hidden" th:field="*{image}" readonly >
+                            <input class="trans" type="number" name="quantity" id="quantity" min="0" max ="5" value="1" /><strong><span id="val3"></span>$</strong> 
+                            <div class="action">
+                                <input class="add-to-cart btn btn-default" type="submit" value="Add to cart"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+
+
+$(":input").bind('keyup mouseup', function () {
+	var x = document.getElementById("price").value;
+	var y = document.getElementById("quantity").value;
+	var rs = x*y;
+	document.getElementById("val3").innerHTML =  rs;
+});
+
+</script>
+</html>

@@ -14,6 +14,16 @@ public class UserDTO {
 	private String email;
 	private String address;
 	private String password;
+	private String confirm_password;
+	
+	private int id_city;
+	
+	public String getConfirm_password() {
+		return confirm_password;
+	}
+	public void setConfirm_password(String confirm_password) {
+		this.confirm_password = confirm_password;
+	}
 	public int getId() {
 		return id;
 	}
@@ -68,5 +78,18 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public int getId_city() {
+		return id_city;
+	}
+	public void setId_city(int id_city) {
+		this.id_city = id_city;
+	}
+	@Override
+	public String toString() {
+		return "UserDTO [id=" + id + ", username=" + username + ", fullname=" + fullname + ", gender=" + gender
+				+ ", birthday=" + birthday + ", phone=" + phone + ", email=" + email + ", address=" + address
+				+ ", password=" + password + ", confirm_password=" + confirm_password + ", id_city=" + id_city + "]";
+	}
+	
 	
 }

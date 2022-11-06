@@ -2,15 +2,55 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="/css/update.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>UPDATE CIY</h1>
-	<form th:action="@{/category/update}" method="post" th:object="${category}">
-		<input th:field="*{id}" readonly />
-		<input th:field="*{name}" /> 
-		<input th:field="*{description}" /> 
-		<input type="submit" value="Submit" />
-	</form>
+	<div class="wrapper">
+		<div class="inner">
+			<div class="image-holder">
+				<img src="/images/img.jpg" alt="">
+			</div>
+			<form th:action="@{/seller/update}" method="post" th:object="${product}" enctype="multipart/form-data">
+				<h3>UPDATE PRODUCT</h3>
+				<div class="form-row">
+					<input type="text" class="form-control" required placeholder="ID" th:field="*{id}" readonly />
+					<input type="text" class="form-control" required placeholder="NAME" th:field="*{name}"/>
+					<input type="text" class="form-control" required placeholder="PRICE" th:field="*{price}" /> 
+				</div>
+				<div class="form-row">
+					<input type="text" class="form-control" name="code" placeholder="CODE">
+					<div class="form-holder">
+						<select name="categoryName" class="form-control">
+									<option th:text="*{categoryName}" th:value="*{categoryName}"/>
+									<th:block th:each="i : ${category}">
+									<option th:unless="${#strings.equals(product.categoryName, i)}" th:value="${i}" th:text="${i}"/>
+						</select>
+						<i class="zmdi zmdi-chevron-down"></i>
+					</div>
+				</div>
+				<textarea th:field="*{description}" name="description" id="" placeholder="DESCRIPTION" class="form-control" style="height: 130px;"></textarea>
+				<div class="form-row">
+					<!-- <input type="file" class="form-png" name="file" accept="image/png, image/jpeg" />  -->
+						<div>
+			<input type="file" name="file"  accept="image/png, image/jpeg" onchange="LoadFile(event)" />
+			<img id = "thumbnail"  width="100px" height="100px" >
+		</div>
+		<img id="oldImage"  width="100px" height="100px" th:src ="@{${product.ImagePath}}">
+				</div>
+				<button>Submit
+					<!-- <i class="zmdi zmdi-long-arrow-right"></i> -->
+				</button>
+			</form>
+			
+		</div>
+	</div>
+<script type="text/javascript">
+	var LoadFile = function(event){
+		var image = document.getElementById('thumbnail');
+		image.src = URL.createObjectURL(event.target.files[0]);
+		document.getElementById("oldImage").style.display = "none";
+	}
+</script>
 </body>
 </html>

@@ -29,6 +29,16 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
+	@ManyToOne
+	@JoinColumn(name = "create_by")
+	private User Byuser;
+	
+	public User getUser() {
+		return Byuser;
+	}
+	public void setUser(User user) {
+		this.Byuser = user;
+	}
 	public int getId() {
 		return id;
 	}

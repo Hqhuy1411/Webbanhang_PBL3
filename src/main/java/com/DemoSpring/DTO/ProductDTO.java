@@ -1,5 +1,7 @@
 package com.DemoSpring.DTO;
 
+import javax.persistence.Transient;
+
 public class ProductDTO {
 	private int id;
 	private String name;
@@ -8,6 +10,14 @@ public class ProductDTO {
 	private String description;
 	private String code;
 	private String categoryName;
+	private int createBy;
+	
+	public int getCreateBy() {
+		return createBy;
+	}
+	public void setCreateBy(int createBy) {
+		this.createBy = createBy;
+	}
 	public int getId() {
 		return id;
 	}
@@ -49,6 +59,14 @@ public class ProductDTO {
 	}
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+	@Transient
+	public String getImagePath() {
+		if(image == null || id == 0) {
+			return null;
+		}
+		return "/images/" + image;
+		
 	}
 	
 }
